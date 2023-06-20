@@ -13,7 +13,7 @@ namespace KRadiusSubarrayAverages
 			int n = nums.Length;
 			int[] averages = new int[n];
 			Array.Fill(averages, -1);
-			int slidingWindowSum = 0;
+			long slidingWindowSum = 0;
 			int slidingWindowLength = k * 2 + 1;
 			if (slidingWindowLength > n)
 			{
@@ -23,11 +23,11 @@ namespace KRadiusSubarrayAverages
 			{
 				slidingWindowSum += nums[i];
 			}
-			averages[k] = slidingWindowSum / slidingWindowLength;
+			averages[k] = (int)(slidingWindowSum / slidingWindowLength);
 			for (int i = slidingWindowLength; i < n; ++i)
 			{
 				slidingWindowSum = slidingWindowSum - nums[i - slidingWindowLength] + nums[i];
-				averages[i - k] = slidingWindowSum / slidingWindowLength;
+				averages[i - k] = (int)(slidingWindowSum / slidingWindowLength);
 			}
 			return averages;
 		}
